@@ -63,7 +63,9 @@ class _PriceScreenState extends State<PriceScreen> {
                 ),
               ],
               onChanged: (value){
-                selectedCurrency = value;
+                setState(() {
+                  selectedCurrency = value;
+                });
               },
             ),
           ),

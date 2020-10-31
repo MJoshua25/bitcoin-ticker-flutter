@@ -9,10 +9,9 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-
   String selectedCurrency = 'USD';
 
-  List<DropdownMenuItem<String>> getDropdownItems(){
+  List<DropdownMenuItem<String>> getDropdownItems() {
     List<DropdownMenuItem<String>> dropdownItems = [];
     for (String currency in currenciesList) {
       dropdownItems.add(
@@ -25,16 +24,13 @@ class _PriceScreenState extends State<PriceScreen> {
     return dropdownItems;
   }
 
-  List<Widget> getCupertinoItems(){
+  List<Widget> getCupertinoItems() {
     List<Widget> cupertinoItems = [];
-    for (String currency in currenciesList){
-      cupertinoItems.add(
-        Text(currency)
-      );
+    for (String currency in currenciesList) {
+      cupertinoItems.add(Text(currency));
     }
     return cupertinoItems;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +71,7 @@ class _PriceScreenState extends State<PriceScreen> {
             child: CupertinoPicker(
               backgroundColor: Colors.lightBlue,
               itemExtent: 32.0,
-              onSelectedItemChanged: (selectedIndex){
+              onSelectedItemChanged: (selectedIndex) {
                 print(selectedIndex);
                 selectedCurrency = currenciesList[selectedIndex];
               },

@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'services/networking.dart';
+
 const List<String> currenciesList = [
   'AUD',
   'BRL',
@@ -28,4 +31,12 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
-class CoinData {}
+const coinapiURL = 'https://rest.coinapi.io/v1/exchangerate';
+const apiKey = 'C800CDE5-B198-4063-BC73-892D9449981D';
+
+class CoinData {
+  Future<Double> getRate({String crypto, String currencie}) async{
+
+    var data = NetwookHelper('$coinapiURL/$crypto/$currencie?apikey=$apiKey').getData();
+  }
+}

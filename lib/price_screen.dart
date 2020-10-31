@@ -12,6 +12,11 @@ class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = 'USD';
 
   CupertinoPicker getCupertinoPicker() {
+    List<Widget> cupertinoItems = [];
+    for (String currency in currenciesList) {
+      cupertinoItems.add(Text(currency));
+    }
+
     return CupertinoPicker(
       backgroundColor: Colors.lightBlue,
       itemExtent: 32.0,
@@ -21,7 +26,7 @@ class _PriceScreenState extends State<PriceScreen> {
           selectedCurrency = currenciesList[selectedIndex];
         });
       },
-      children: getCupertinoItems(),
+      children: cupertinoItems,
     );
   }
 
@@ -45,14 +50,6 @@ class _PriceScreenState extends State<PriceScreen> {
         });
       },
     );
-  }
-
-  List<Widget> getCupertinoItems() {
-    List<Widget> cupertinoItems = [];
-    for (String currency in currenciesList) {
-      cupertinoItems.add(Text(currency));
-    }
-    return cupertinoItems;
   }
 
   @override

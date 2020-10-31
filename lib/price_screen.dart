@@ -73,7 +73,9 @@ class _PriceScreenState extends State<PriceScreen> {
               itemExtent: 32.0,
               onSelectedItemChanged: (selectedIndex) {
                 print(selectedIndex);
-                selectedCurrency = currenciesList[selectedIndex];
+                setState(() {
+                  selectedCurrency = currenciesList[selectedIndex];
+                });
               },
               children: getCupertinoItems(),
             ),

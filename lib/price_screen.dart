@@ -12,7 +12,7 @@ class _PriceScreenState extends State<PriceScreen> {
 
   String selectedCurrency = 'USD';
 
-  List<DropdownMenuItem> getDropdownItems(){
+  List<DropdownMenuItem<String>> getDropdownItems(){
     List<DropdownMenuItem<String>> dropdownItems = [];
     for (String currency in currenciesList) {
       dropdownItems.add(

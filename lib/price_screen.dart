@@ -12,6 +12,8 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = 'USD';
+  Map<String, String> coinValues = {};
+  bool isWaiting = false;
 
   CupertinoPicker getCupertinoPicker() {
     List<Widget> cupertinoItems = [];
@@ -58,10 +60,12 @@ class _PriceScreenState extends State<PriceScreen> {
   }
 
   void getData() async {
+    isWaiting = true;
     try{
-      double data = await CoinData().getRate(crypto: "BTC", currencie: selectedCurrency);
+      var data = await CoinData().getFullRate(selectedCurrency: selectedCurrency);
+      isWaiting = false;
       setState(() {
-        exchangeRateBTC = data.toStringAsFixed(0);
+        coinValues = data;
       });
     } catch (e) {
       print(e);

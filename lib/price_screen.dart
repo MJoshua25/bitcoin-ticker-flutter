@@ -12,7 +12,6 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = 'USD';
-  String exchangeRateBTC = '?';
 
   CupertinoPicker getCupertinoPicker() {
     List<Widget> cupertinoItems = [];
@@ -27,7 +26,6 @@ class _PriceScreenState extends State<PriceScreen> {
         print(selectedIndex);
         setState(() {
           selectedCurrency = currenciesList[selectedIndex];
-          exchangeRateBTC = '?';
           getData();
         });
       },
@@ -53,7 +51,6 @@ class _PriceScreenState extends State<PriceScreen> {
       onChanged: (value) {
         setState(() {
           selectedCurrency = value;
-          exchangeRateBTC = '?';
           getData();
         });
       },

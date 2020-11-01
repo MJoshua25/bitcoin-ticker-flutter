@@ -32,7 +32,8 @@ class _PriceScreenState extends State<PriceScreen> {
         });
       },
       children: cupertinoItems,
-      scrollController: FixedExtentScrollController(initialItem: currenciesList.indexOf(selectedCurrency)),
+      scrollController: FixedExtentScrollController(
+          initialItem: currenciesList.indexOf(selectedCurrency)),
     );
   }
 
@@ -61,8 +62,9 @@ class _PriceScreenState extends State<PriceScreen> {
 
   void getData() async {
     isWaiting = true;
-    try{
-      var data = await CoinData().getFullRate(selectedCurrency: selectedCurrency);
+    try {
+      var data = await CoinData().getFullRate(
+          selectedCurrency: selectedCurrency);
       isWaiting = false;
       setState(() {
         coinValues = data;
@@ -70,6 +72,23 @@ class _PriceScreenState extends State<PriceScreen> {
     } catch (e) {
       print(e);
     }
+  }
+
+  Column makeCards() {
+    List<CryptoCard> cryptoCards = [];
+    for (String crypto in cryptoList) {
+      cryptoCards.add(
+          CryptoCard(
+            cryptoCurrency: crypto,
+            value: isWaiting ? '?' : coinValues[crypto],
+            selectedCurrency: selectedCurrency,
+          )
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: cryptoCards,
+    );
   }
 
   @override

@@ -44,4 +44,13 @@ class CoinData {
     }
 
   }
+
+  Future getFullRate({String selectedCurrency}) async {
+    Map<String, String> cryptoPrices = {};
+    for (String crypto in cryptoList){
+      var aux = await getRate(crypto: crypto, currencie: selectedCurrency);
+      cryptoPrices[crypto] = aux.toStringAsFixed(0);
+    }
+    return cryptoPrices;
+  }
 }

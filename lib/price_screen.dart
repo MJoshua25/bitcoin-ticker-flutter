@@ -27,6 +27,7 @@ class _PriceScreenState extends State<PriceScreen> {
         });
       },
       children: cupertinoItems,
+      scrollController: FixedExtentScrollController(initialItem: currenciesList.indexOf(selectedCurrency)),
     );
   }
 
@@ -73,7 +74,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 $selectedCurrency = ? USD',
+                  '1 BTC = ? $selectedCurrency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,

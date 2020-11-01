@@ -5,7 +5,7 @@ class NetwookHelper{
   NetwookHelper(this.url);
 
   final String url;
-  Future<dynamic> getData() async{
+  Future getData() async{
     Http.Response response = await Http.get(url);
     if (response.statusCode == 200){
       String data = response.body;

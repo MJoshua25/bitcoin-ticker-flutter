@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coin_data.dart';
@@ -10,6 +12,7 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = 'USD';
+  String exchangeRateBTC;
 
   CupertinoPicker getCupertinoPicker() {
     List<Widget> cupertinoItems = [];
@@ -51,6 +54,17 @@ class _PriceScreenState extends State<PriceScreen> {
         });
       },
     );
+  }
+
+  void getData() async {
+    try{
+      double data = await CoinData().getRate(crypto: "BTC", currencie: selectedCurrency);
+      setState(() {
+        exchangeRateBTC = data.toStringAsFixed(0);
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
